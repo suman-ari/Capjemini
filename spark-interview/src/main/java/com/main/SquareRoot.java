@@ -15,7 +15,7 @@ public class SquareRoot {
 		SparkSession spark = SparkSession.builder().appName("sqrt").master("local").getOrCreate();
 
 		/* Reading data from text file and creating a dataset of string values */ 
-		Dataset<String> df = spark.read().textFile("C:\\Users\\HP\\git\\repository\\spark-interview\\src\\main\\resources\\data.txt");
+		Dataset<String> df = spark.read().textFile("<Path>");
 
 		/* converting dataset of string to dataset of its squre value in long*/ 
 		Dataset<Long> fd1 = df.map((MapFunction<String, Long>) row -> 
