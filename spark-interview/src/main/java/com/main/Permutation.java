@@ -6,25 +6,23 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-/*add code comments*/
-/*test case*/
+/**
+ * Class to show the permutations the contents of an array
+ * @author Suman
+ *
+ */
+
 public class Permutation {
 	
 	public static List<List<Integer>> list;
 	
+	/* method to implement permutation */
 	public static void permute(int[] arr, int current_index)
 	{
 		if(current_index == arr.length)
 		{
-			List<Integer> combination = new ArrayList<Integer>();
-			
-			for(int j=0; j< arr.length; j++)
-			{
-				combination.add(j,arr[j]);
-			}
-			
+			List<Integer> combination = Arrays.stream(arr).boxed().collect(Collectors.toList());
 			list.add(combination);
-			
 		}
 		else
 		{
@@ -37,6 +35,7 @@ public class Permutation {
 		}
 	}
 
+	/* method to swap values */
 	public static void swap(int[] arr, int j, int current_index) {
 		int temp=arr[current_index];
 		arr[current_index] = arr[j];
