@@ -1,8 +1,13 @@
 package com.main;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
+import java.util.stream.Collectors;
 
+/*add code comments*/
+/*test case*/
 public class Permutation {
 	
 	public static List<List<Integer>> list;
@@ -12,6 +17,7 @@ public class Permutation {
 		if(current_index == arr.length)
 		{
 			List<Integer> combination = new ArrayList<Integer>();
+			
 			for(int j=0; j< arr.length; j++)
 			{
 				combination.add(j,arr[j]);
@@ -38,9 +44,24 @@ public class Permutation {
 		
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 
-		int[] arr = { 1, 2, 3, 4 };
+		Scanner in = new Scanner(System.in);
+		
+		/* size of array from console input */
+		int size = in.nextInt();
+
+		/* array elements input from console */
+		String input[] = in.next().split(",");
+		
+		List<Integer> inputList = Arrays.stream(input).map(n->Integer.parseInt(n)).collect(Collectors.toList());
+		
+		if (inputList.size() != size) {
+			throw new Exception("array size does not match with number of input data");
+		}
+		
+		/* converting to integer array */
+		int[] arr = inputList.stream().mapToInt(i->i).toArray();
 		
 		list = new ArrayList<List<Integer>>();
 		
@@ -50,6 +71,8 @@ public class Permutation {
 		}
 		
 		System.out.println(list);
+		
+		in.close();
 	}
 
 }
